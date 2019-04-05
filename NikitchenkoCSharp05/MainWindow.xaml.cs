@@ -10,8 +10,12 @@ namespace NikitchenkoCSharp05
     {
         public MainWindow()
         {
+           
             InitializeComponent();
+            Kill.IsEnabled = false;
+            Open.IsEnabled = false;
         }
+      
 
         private void TasksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -19,9 +23,15 @@ namespace NikitchenkoCSharp05
 
             if (listBox.SelectedItems.Count > 0)
             {
-
                 var viewModel = (ViewModel)DataContext;
                 viewModel.SelectedProcess = ((ProcessListItem)listBox.SelectedItems[0]).Process;
+                Kill.IsEnabled = true;
+                Open.IsEnabled = true;
+            }
+            else if (listBox.SelectedItems.Count == 0)
+            {
+                Kill.IsEnabled = false;
+                Open.IsEnabled = false;
             }
         }
 
@@ -35,6 +45,7 @@ namespace NikitchenkoCSharp05
 
         private void KillProcess_OnClick(object sender, RoutedEventArgs e)
         {
+          
             var viewModel = (ViewModel)DataContext;
             viewModel.KillSelectedProcess();
         }
