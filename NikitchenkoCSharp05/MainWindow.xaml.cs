@@ -39,6 +39,12 @@ namespace NikitchenkoCSharp05
             viewModel.KillSelectedProcess();
         }
 
+        private void OpenFolder_OnClick(object sender, RoutedEventArgs e)
+        {
+            var viewModel = (ViewModel)DataContext;
+            viewModel.OpenFolderSelectedProcess();
+        }
+
         private void ToggleButton_OnChecked(object sender, RoutedEventArgs e)
         {
             var checkBox = (CheckBox)sender;

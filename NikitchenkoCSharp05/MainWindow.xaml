@@ -82,9 +82,11 @@
         <Grid Grid.Row="1" Margin="0,1,0.286,11">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="41*"/>
+                <ColumnDefinition Width="41*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="Kill process" FontSize="25" Background="Red" Click="KillProcess_OnClick" Margin="0,0,-0.286,-15"/>
+            <Button Grid.Column="0" Content="Kill Process" FontSize="25" Background="Red" Click="KillProcess_OnClick" Margin="0,0,-0.286,-15"/>
+            <Button Grid.Column="1" Content="Open Folder" FontSize="25" Background="Blue" Click="OpenFolder_OnClick" Margin="0,0,-0.286,-15"/>
         </Grid>
 
 

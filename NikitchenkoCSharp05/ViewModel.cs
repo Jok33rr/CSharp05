@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
@@ -63,9 +64,21 @@ namespace NikitchenkoCSharp05
         {
             SelectedProcess.Kill();
         }
+        public void OpenFolderSelectedProcess()
+        {
+            string path = SelectedProcess.MainModule.FileName;
+            string dbf_Path = System.IO.Path.GetDirectoryName(path);
+
+            ProcessStartInfo startInfo = new ProcessStartInfo { Arguments = dbf_Path, FileName = "explorer.exe" };
+            Process.Start(startInfo);
+        }
+
+
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
-        
+
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
